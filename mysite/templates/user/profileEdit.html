@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'headers.html' %}
+<div class="col-lg-8 m-">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="text-center my-5">Edit Profile</h4>
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+      <div class="row mb-3">
+        <div class="col-sm-3">
+          <h6 class="mb-0">First Name</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+          <input type="text" class="form-control" value="" name="firstname" >
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Last Name</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+          <input type="text" class="form-control" value="" name="lastname">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Email</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+          <input type="email" class="form-control" value="" name="email">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Profile Pics</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+          <input type="file" class="form-control" value="" name="profile">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-9 text-secondary">
+          <button class="btn btn-danger px-4"type="submit">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}

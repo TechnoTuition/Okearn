@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'headers.html' %}
+<div class="roww flex">
+
+  <div class="coll-6 shadoww">
+    <span>See all post <a href="">click</a></span>
+    {% if user.posts %}
+    <ol class="list-group list-group-numbered">
+      {% for post in user.posts %}
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">
+            {{ post.title }}
+          </div>
+        </div>
+        <span class="badge bg-info rounded-pill"><i class="bi bi-eye"></i>14</span>
+      </li>
+      {% endfor %}
+      {% else %}
+      <p>No Have any post</p>
+    </ol>
+
+    {% endif %}
+  </div>
+  <div class="coll-4 shadoww">
+    <ul class="list-group">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Total like
+        <span class="badge bg-primary rounded-pill"><i class="bi bi-hand-thumbs-up"></i>14</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Total views
+        <span class="badge bg-primary rounded-pill"><i class="bi bi-eye"></i>2</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Followers
+        <span class="badge bg-primary rounded-pill"><i class="bi bi-people"></i>1</span>
+      </li>
+    </ul>
+  </div>
+</div>
+{# include 'footer.html' #}
+{% endblock %}

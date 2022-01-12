@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'headers.html' %}
+
+<div class="roww flex">
+  <div class="coll-4 shadoww ">
+    <div class="d-flex flex-column align-items-center text-center">
+      <img src="/static/media/profile_pic/{{ current_user.image_file }}" alt="Admin" class="rounded-circle" width="100">
+      <h4>{{ current_user.firstname }}{{ current_user.lastname }}</h4>
+      <p class="text-secondary mb-1">
+        Full Stack Developer
+      </p>
+      <p class="text-muted font-size-sm">
+        Bay Area, San Francisco, CA
+      </p>
+      <button class="btn btn-danger mb-3">Follow</button>
+      <button class="btn btn-outline-danger">Message</button>
+    </div>
+  </div>
+  <div class="coll-6 shadoww radiuss">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">First Name</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+          {{ current_user.firstname }}
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Last Name</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+          {{ current_user.lastname }}
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Email</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+          {{ current_user.email }}
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-12">
+          <a class="btn btn-outline-danger " href="/user/profileedit/{{ current_user.id }}">Edit</a>
+        </div>
+      </div>
+    </div>
+
+    {% endblock %}

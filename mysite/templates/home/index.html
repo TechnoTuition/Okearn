@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Okearn{% endblock %}
+{% block content %}
+{% if current_user.is_authenticated %}
+{% include 'headers.html' %}
+{% include 'blog/home.html' %}
+{% else %}
+{% include 'withoutloginheader.html' %}
+Home
+{% endif %}
+{% endblock %}
