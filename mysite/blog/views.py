@@ -31,3 +31,8 @@ def index():
   else:
     form = PostForm()
   return render_template('blog/index.html',form=form)
+
+@blog.route('/read/<title>/',methods=["GET","POST"])
+@login_required
+def read_post(title):
+  return render_template("blog/readpost.html")

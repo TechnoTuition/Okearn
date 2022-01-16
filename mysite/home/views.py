@@ -1,6 +1,7 @@
 from flask import Blueprint,render_template,request,flash,redirect,url_for,session,jsonify
 from .forms import RegisterForm,LoginForm,EmailVerificationForm
 from .models import User
+from mysite.blog.models import Blog
 from mysite import bcrypt,db,mail,final,socketio
 from flask_login import login_user,current_user,login_required,logout_user
 from .utils import email_verification
@@ -15,8 +16,9 @@ def handle_message(data):
     send(data)
 @home.route('/')
 def index():
-  
-  return render_template("home/index.html")
+  post = Blog.query.all()
+  print(post)
+  return render_template("home/index.html",posts=post)
 # register form 
 @home.route('/register/',methods=['GET','POST'])
 def user_register():

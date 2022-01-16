@@ -2,38 +2,43 @@
 {% block title %}Creat Post{% endblock %}
 {% block content %}
 {% include 'headers.html' %}
-<div class="container my-5">
-  <form method="post",action="{{ url_for('blog.index')}}">
+<div class="roww flex my-5">
+  <div class="coll-6 border">
+    <form class="m-auto "method="post",action="{{ url_for('blog.index')}}">
 
-    {{ form.hidden_tag() }}
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">{{ form.title.label }}</label>
-      {{ form.title(class="form-control") }}
-      {% if form.title.errors %}
-      <ul>
-        {% for error in form.title.errors %}
-        <li class="text-danger">{{ error }}</li>
-        {% endfor %}
-      </ul>
-      {% endif %}
+      {{ form.hidden_tag() }}
+      <div class="mb-3">
+        {{ form.title(class="inpu") }}
+        {% if form.title.errors %}
+        <ul>
+          {% for error in form.title.errors %}
+          <li class="text-danger">{{ error }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
 
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">{{ form.body.label }}</label>
-      {{ form.body() }}
-      {% if form.body.errors %}
-      <ul>
-        {% for error in form.body.errors %}
-        <li class="text-danger">{{ error }}</li>
-        {% endfor %}
-      </ul>
-      {% endif %}
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">{{ form.body.label }}</label>
+        {{ form.body(class="inpu") }}
+        {% if form.body.errors %}
+        <ul>
+          {% for error in form.body.errors %}
+          <li class="text-danger">{{ error }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
 
-    </div>
-    {{ form.submit(class="btn btn-outline-danger") }}
-  </form>
+      </div>
+      {{ form.submit(class="btnn") }}
+    </form>
 
-  {{ ckeditor.load() }}
-  {{ ckeditor.config(name='body',height="500") }}
+    {{ ckeditor.load() }}
+    {{ ckeditor.config(name='body',height="500",width="40vw") }}
+  </div>
+  <div class="coll-4 border">
+    bkj
+  </div>
+  </div>
 </div>
 {% endblock %}

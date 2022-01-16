@@ -10,3 +10,9 @@ class Blog(db.Model):
   post_created = db.Column(db.DateTime,nullable=False,default=datetime.utcnow)
   post_image = db.Column(db.String(50),unique=False,nullable=True)
   user_id = db.Column(db.Integer,db.ForeignKey('user.id'),nullable=False)
+  like =  db.relationship('Like',backref='blog')
+    
+class Like(db.Model):
+  id = db.Column(db.Integer,primary_key=True)
+  user = db.Column(db.Integer,db.ForeignKey('user.id',ondelete="CASCADE"),nullable=False)
+  post = db.Column(db.Integer,db.ForeignKey('blog.id',ondelete="CASCADE"),nullable=False)

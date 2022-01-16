@@ -1,24 +1,32 @@
 {% extends 'base.html' %}
 {% block title %}Verifiy Email {% endblock %}
 {% block content %}
-<div class="container my-5">
-  <h3>Email Verification</h3>
-  <form method="POST">
-    {{ form.hidden_tag() }}
-    <div class="mb-3 my-4">
-      <label for="exampleInputEmail1" class="form-label">{{ form.code.label }}</label>
-      {{ form.code(class="form-control",placeholder="6-digit-code") }}
-      {% if form.code.errors %}
-      <ul >
-        {% for error in form.code.errors %}
-        <li class="text-danger">{{ error }}</li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-
+<div class="roww my-5">
+  <div class="coll-6 flex colum m-auto bg-slate-200 shadoww">
+    <h3 class="m-auto p-top-10">Email Verification</h3>
+    <div class="m-top-10">
+      <p class="m-auto border m-top-10 inpu bg-orange-10 my-8">
+        Code send your email please check your email and a code
+      </p>
     </div>
-    <button class="btn btn-danger"type="submit">Verifiy</button>
-</div>
 
-</form>
+    <form class="m-auto"method="POST">
+      {{ form.hidden_tag() }}
+      <div class="mb-3 my-4 m-auto">
+        {{ form.code(class="inpu",placeholder="6-digit-code") }}
+        {% if form.code.errors %}
+        <ul>
+          {% for error in form.code.errors %}
+          <li class="text-danger">{{ error }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+      </div>
+      <button class="btnn"type="submit">Verifiy</button>
+    </div>
+
+  </form>
+</div>
+</div>
 {% endblock %}

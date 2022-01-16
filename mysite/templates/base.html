@@ -16,13 +16,13 @@
   {% block content %}{% endblock %}
 
 
-  <div class="container">
+  <div class="roww">
 
     {% with messages = get_flashed_messages() %}
     {% if messages %}
-    <ul>
+    <ul class="coll-4 list-style-none ">
       {% for message in messages %}
-      <li class="alert alert-danger">{{ message }}</li>
+      <li class="bg-slate-200 p-y-6 p-x-6">{{ message }}</li>
       {% endfor %}
     </ul>
     {% endif %}
@@ -31,5 +31,6 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/e916a9c960.js" crossorigin="anonymous"></script>
 </body>
 </html>

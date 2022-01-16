@@ -1,27 +1,18 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/">OkEarn</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/about/">About</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{ url_for('home.user_login') }}">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{ url_for('home.user_register') }}">Signup</a>
-        </li>
-
+  <nav class="bg-slate-200 flex space-bet shadoww t-center">
+    <div class="flex nav-left p-left-20">
+      <p id="menu" class="d-display-none m-display-block f-size-10 m-f-lighter  m-b-0">&equiv;</p>
+      <ul id="ul" class="flex list-style-none p-x-6 m-colum m-nav m-b-0">
+        <h2 class="d-display-none m-display-block">OKEARN</h2>
+        <li class="m-p-top-20"><a class="text-decorations-none p-x-6 text-orange-50" href=""><i class="fas fa-home"></i>HOME</a></li>
+        <li class="m-p-top-20"><a class="text-decorations-none p-x-6 text-orange-50 " href="">ABOUT</a></li>
+        <li class="m-p-top-20"><a class="text-decorations-none p-x-6 text-orange-50 " href="{{ url_for('home.user_login') }}"><i class="fas fa-sign-in-alt"></i>LOGIN</a></li>
+        <li class="m-p-top-20"><a class="text-decorations-none p-x-6 text-orange-50" href="{{ url_for('home.user_register') }}"><i class="fas fa-user-plus"></i>RESITER</a></li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+
     </div>
-  </div>
-</nav>
+    <div class="nav-right p-right-20 flex t-center">
+      <h2 class="m-b-0">OKERAN</h2>
+    </div>
+
+  </nav>
+  <script src="{{ url_for('static',filename='js/nav.js')}}"></script>

@@ -7,6 +7,7 @@ from flask_socketio import SocketIO
 from flask_ckeditor import CKEditor
 from flask_debugtoolbar import DebugToolbarExtension
 
+
 app = Flask(__name__)
 #--------------CKEditor--------------------
 
@@ -27,12 +28,11 @@ app.config['SECRET_KEY'] = 'a72c3251c8451aed32520c20b1ab7475'
 
 #-------- DebugToolbarExtension ----------
 app.debug = True
-#toolbar = DebugToolbarExtension(app)
+toolbar = DebugToolbarExtension(app)
 #=======DATABASE==============
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
-
 #------------Flask-Mail--------------
 app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
 app.config['MAIL_PORT']  = 465

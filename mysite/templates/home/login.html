@@ -1,42 +1,44 @@
 {% extends 'base.html' %}
 {% block content %}
 {% include 'withoutloginheader.html' %}
-<div class="container my-5">
-  <h3 class="my-5">Login Here</h3>
-  <form method="POST" novalidate>
+<div class="roww my-5">
+  <div class="coll-6 m-auto bg-slate-200 shadoww ">
+    <div class="flex colum">
+      <h3 class="my-5 m-auto">Login Here</h3>
+      <form class="m-auto"method="POST" novalidate>
         {{ form.hidden_tag() }}
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">{{ form.email.label }}</label>
-      {{ form.email(class="form-control") }}
-      {% if form.email.errors %}
-      <ul >
-        {% for error in form.email.errors %}
-        <li class="text-danger">{{ error }}</li>
-        {% endfor %}
-      </ul>
-      {% endif %}
+        <div class="mb-3 block">
+          {{ form.email(class="inpu block",placeholder="Email") }}
+          {% if form.email.errors %}
+          <ul>
+            {% for error in form.email.errors %}
+            <li class="text-danger">{{ error }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
 
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">{{ form.password.label }}</label>
-      {{ form.password(class="form-control") }}
-      <div>
-        {% if form.password.errors %}
-        <ul class="errors">
-          {% for error in form.password.errors %}
-          <li class="text-danger">{{ error }}</li>
-          {% endfor %}
-        </ul>
-        {% endif %}
-      </div>
-    </div>
+        </div>
+        <div class="mb-3">
+          {{ form.password(class="inpu",placeholder="Password") }}
+          <div>
+            {% if form.password.errors %}
+            <ul class="errors">
+              {% for error in form.password.errors %}
+              <li class="text-danger">{{ error }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+        </div>
 
-    <span><a class="link-danger"href="/forgotpassword/">Forgot Password ?</a></span>
-  </p>
-  <button type="submit" class="btnn-normal">Login</button>
-</form>
-<p class="my-4">
-  You Don,t have an Account! <span><a class="link-primary"href="{{ url_for('home.user_register')}}">Signup Here</a></span>
-</p>
+        <span><a class="link-danger"href="/forgotpassword/">Forgot Password ?</a></span>
+      </p>
+      <button type="submit" class="btnn-lg">Login</button>
+    </form>
+    <p class="my-4 m-auto">
+      You Don,t have an Account! <span><a class="link-primary"href="{{ url_for('home.user_register')}}">Signup Here</a></span>
+    </p>
+  </div>
+</div>
 </div>
 {% endblock %}
