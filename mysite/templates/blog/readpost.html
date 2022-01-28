@@ -1,42 +1,58 @@
-  {% extends 'base.html' %}
+{% extends 'base.html' %}
 {% block title %}Creat Post{% endblock %}
 {% block content %}
 {% include 'headers.html' %}
-  <div class="roww">
-    <div class="coll-10-lg my-8 ">
-      <div class="bg-slate-200 flex t-center p-x-6 p-y-6 space-around">
-        <div class="flex t-center">
-          <img class="img-pic " src="pic.jpg" alt="">
-          <h3 class="m-left-4">Suraj Pajapati
-            <p class="text-sm text-gray-50 m-b-0">
-              9 January 2017 at 8:30am <i class="fas fa-globe-americas"></i>
-            </p>
-          </h3>
-        </div>
-        <div class="">
-          <button class="btnn">Fallow</button>
-        </div>
+<div class="roww">
+  <div class="coll-10-lg my-8 ">
+    <div class="bg-slate-200 flex t-center p-x-6 p-y-6 space-around ">
+      <div class="flex t-center">
+        <img class="img-pic " src="pic.jpg" alt="">
+        <h3 class="m-left-4">{{ posts.users.firstname }}
+          {{ posts.users.lasttname }}
+          <p class="text-sm text-gray-50 m-b-0">
+            {{ posts.post_created.strftime('%Y-%m-%d') }}<i class="fas fa-globe-americas"></i>
+          </p>
+        </h3>
       </div>
-      <div class="flex t-center ">
-        <img class="thumbnails p-y-6 t-center m-auto" src="download.png" alt="">
-      </div>
-      <hr>
-      <div class="flex-mobile flex space-around t-center">
-        <div>
-          <h3 class="p-y-6 p-x-6 border witdh-50">What is the only one that I just don't like to be how much is that I am going back and get some 😴 but you don't know if it doesn't have any idea <p class="text-sm text-gray-50"><i class="far fa-eye"></i>12k views</p>
-          </h3>
-        </div>
-        <div class="flex t-center">
-          <p class="p-x-10 p-y-6"><a class="text-decorations-none text-gray-50" href=""><i class="far fa-thumbs-up"></i>like</a></p>
-          <p class="p-x-10 p-y-6 "><a class="text-decorations-none text-gray-50" href=""><i class="far fa-thumbs-down"></i>like</a></p>
-          <p class="p-x-10 p-y-6"><a class="text-decorations-none text-gray-50" href=""><i class="fas fa-share"></i>like</a></p>
-
-        </div>
-
-      </div>
-      <hr>
-      <div class="mx-8">
-        <p class="text-gray-50 p-y-6 text-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos sapiente necessitatibus voluptatem, debitis mollitia, minima recusandae cumque itaque ducimus deleniti officiis, molestiae aperiam dignissimos quis dolorum sunt voluptates iste dolor, nostrum eveniet maiores adipisci vitae tenetur! Cum fugiat quis magnam, quasi nemo animi voluptas, praesentium officia, officiis distinctio inventore similique enim voluptate assumenda vel. Nisi mollitia dolor est dolorem, quo assumenda a qui impedit quis eos molestiae, obcaecati dignissimos possimus vitae fugiat quasi facere provident iste unde repudiandae fuga necessitatibus nostrum saepe at. Veritatis impedit quasi nobis voluptatibus, ducimus fuga tempora repudiandae, laborum et obcaecati, saepe cumque ad eos ipsum.</p>
+      <div class="">
+        <button class="btnn">Fallow</button>
       </div>
     </div>
-    {% endblock %}
+    <div class="flex t-center ">
+      <img class="thumbnails p-y-6 t-center m-auto" src="download.png" alt="">
+    </div>
+    <hr>
+    <div class="flex-mobile flex space-around t-center">
+      <div>
+        <h3 class="p-y-6 p-x-6 witdh-50">{{ posts.title }}<p class="text-sm text-gray-50">
+          <i class="far fa-eye"></i>12k views
+        </p>
+        </h3>
+      </div>
+      <div class="flex t-center">
+        <p class="p-x-10 p-y-6">
+          <span id="likeCount{{ posts.id }}">{{ posts.like|length}}</span>
+          <i class="far fa-thumbs-up" onclick='like({{ posts.id }})'>like</i>
+
+        </p>
+
+        <p class="p-x-10 p-y-6">
+          <a class="text-decorations-none text-gray-50" href=""><i class="fas fa-share"></i>share</a>
+        </p>
+
+      </div>
+
+    </div>
+    <hr>
+    <div class="mx-8">
+      <p class="text-gray-50 p-y-6 text-md">
+        {{ posts.body }}
+      </p>
+    </div>
+  </div>
+
+
+  {% endblock %}
+  {% block script %}
+   <script src="{{ url_for('static', filename='js/blog/readpost.js')}}" type="text/javascript" charset="utf-8"></script>
+  {% endblock %}

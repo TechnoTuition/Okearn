@@ -6,8 +6,11 @@ from flask_mail import Mail
 from flask_socketio import SocketIO
 from flask_ckeditor import CKEditor
 from flask_debugtoolbar import DebugToolbarExtension
+from flask_marshmallow import Marshmallow
+from os import environ
+from dotenv import load_dotenv
 
-
+load_dotenv()
 app = Flask(__name__)
 #--------------CKEditor--------------------
 
@@ -24,22 +27,26 @@ login_manager.init_app(app)
 login_manager.login_view = "home.user_login"
 login_manager.login_message_category = "success"
 
-app.config['SECRET_KEY'] = 'a72c3251c8451aed32520c20b1ab7475'
+app.config['SECRET_KEY'] = environ['SECRET_KEY']
 
 #-------- DebugToolbarExtension ----------
 app.debug = True
-toolbar = DebugToolbarExtension(app)
+#toolbar = DebugToolbarExtension(app)
 #=======DATABASE==============
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = environ['SQLALCHEMY_DATABASE_URI']
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = environ['SQLALCHEMY_TRACK_MODIFICATIONS']
 db = SQLAlchemy(app)
+
+#-------------MarshMallow---------------
+ma = Marshmallow(app)
+
 #------------Flask-Mail--------------
-app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
-app.config['MAIL_PORT']  = 465
-app.config['MAIL_USERNAME'] = 'surajp9999999@gmail.com'
-app.config['MAIL_PASSWORD'] = '88406439wp'
-app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USE_SSL'] = True
+app.config['MAIL_SERVER'] = environ['MAIL_SERVER']
+app.config['MAIL_PORT']  = environ['MAIL_PORT']
+app.config['MAIL_USERNAME'] = environ['MAIL_USERNAME']
+app.config['MAIL_PASSWORD'] = environ['MAIL_PASSWORD']
+#app.config['MAIL_USE_TLS'] = environ['MAIL_USE_TLS']
+app.config['MAIL_USE_SSL'] = environ['MAIL_USE_SSL']
 
 mail = Mail(app)
 #------------Random Number Genrate--------------
@@ -56,7 +63,9 @@ final = totalnum[:6]
 from mysite.blog.views import blog
 from mysite.user.views import user
 from mysite.home.views import home
+from mysite.api.views import api
 
 app.register_blueprint(blog,url_prefix='/blog')
 app.register_blueprint(user,url_prefix='/user')
 app.register_blueprint(home,url_prefix='/')
+app.register_blueprint(api,url_prefix='/api')

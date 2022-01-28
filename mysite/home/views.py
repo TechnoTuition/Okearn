@@ -107,31 +107,6 @@ def email_verify():
       return redirect("/")
     form = EmailVerificationForm()
   return render_template("home/email_verification.html",form=form)
-
-@home.route('/api/user/')
-def all_user():
-  users = User.query.all()
-  alldata = []
-  for user in users:
-    data = dict(id = user.id,firstname=user.firstname,lastname=user.lastname,email=user.email,image_file=user.image_file)
-    alldata.append(data)
-  print(alldata)
-  #return jsonify(<pre>alldata</pre>)
-  return f"<pre>{alldata}</pre>"
-
-def serializer():
-  pass
-@home.route('/api/user/<id>/',methods=["GET","POST"])
-def single_user(id):
-  users = User.query.all()
-  alldata = []
-  for user in users:
-    data = dict(id = user.id,firstname=user.firstname,lastname=user.lastname,email=user.email,image_file=user.image_file)
-    alldata.append(data)
-  print(alldata[int(id)])
-  return jsonify(alldata[int(id)])
-
-
 # chat route
 
 @home.route('/chat/',methods=["GET","POST"])

@@ -1,12 +1,11 @@
   <nav class="bg-slate-200 flex space-bet shadoww t-center">
     <div class="flex nav-left p-left-20">
-      <p id="menu" class="d-display-none m-display-block f-size-10 m-f-lighter  m-b-0">&equiv;</p>
-      <ul id="ul" class="flex list-style-none p-x-6 m-colum m-nav m-b-0">
+      <p id="menu" class="d-display-none m-display-block f-size-10 m-b-0">&equiv;</p>
+      <ul id="ul" class="flex list-style-none p-left m-colum text-left m-nav m-b-0 m-auto">
         <h2 class="d-display-none m-display-block">OKEARN</h2>
-        <li class="m-p-top-20"><a class="text-decorations-none p-x-6 text-orange-50" href=""><i class="fas fa-home"></i>HOME</a></li>
-        <li class="m-p-top-20"><a class="text-decorations-none p-x-6 text-orange-50 " href="">ABOUT</a></li>
-        <li class="m-p-top-20"><a class="text-decorations-none p-x-6 text-orange-50 " href="{{ url_for('home.user_login') }}"><i class="fas fa-sign-in-alt"></i>LOGIN</a></li>
-        <li class="m-p-top-20"><a class="text-decorations-none p-x-6 text-orange-50" href="{{ url_for('home.user_register') }}"><i class="fas fa-user-plus"></i>RESITER</a></li>
+        <li class="m-p-top-20 m-left-4"><a class="text-decorations-none p-x-6 text-orange-50 m-left-4" href="/"><i class="fas fa-home"></i>  Home</a></li>
+        <li class="m-p-top-20 m-left-4"><a class="text-decorations-none p-x-6 text-orange-50 m-left-4" href="{{ url_for('home.user_login') }}"><i class="fas fa-sign-in-alt"></i>     Login</a></li>
+        <li class="m-p-top-20 m-left-4"><a class="text-decorations-none p-x-6 text-orange-50 m-left-4" href="{{ url_for('home.user_register') }}">  <i class="fas fa-user-plus"></i>  Register</a></li>
       </ul>
 
     </div>
