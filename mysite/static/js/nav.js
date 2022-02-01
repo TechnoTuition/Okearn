@@ -5,17 +5,12 @@ console.log(nav);
 let ham = () => {
   if (ul.style.right == '-400px') {
     ul.style.right = "0px"
-    menu.innerHTML = "&#10799;"
+    menu.innerHTML = `<i class="bi bi-x"></i>`
 
   } else {
     ul.style.right = '-400px'
-    menu.innerHTML = '&equiv;'
+    menu.innerHTML = `<i class="bi bi-list"></i>`
 
   }
 }
 menu.addEventListener('click', ham)
-window.onclick = function(event) {
-  if (event.target == ul) {
-    ul.style.right = '-45vw'
-  }
-}

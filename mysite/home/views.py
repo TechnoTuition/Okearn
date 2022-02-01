@@ -1,6 +1,6 @@
 from flask import Blueprint,render_template,request,flash,redirect,url_for,session,jsonify
 from .forms import RegisterForm,LoginForm,EmailVerificationForm
-from .models import User
+from .models import User,Fallow
 from mysite.blog.models import Blog
 from mysite import bcrypt,db,mail,final,socketio
 from flask_login import login_user,current_user,login_required,logout_user
@@ -17,7 +17,6 @@ def handle_message(data):
 @home.route('/')
 def index():
   post = Blog.query.all()
-  print(post)
   return render_template("home/index.html",posts=post)
 # register form 
 @home.route('/register/',methods=['GET','POST'])
@@ -92,6 +91,8 @@ def email_verify():
         print(final,form.code.data)
         pass_hash = bcrypt.generate_password_hash(password).decode("utf-8")
         new_user = User(firstname=firstname,lastname= lastname,email=email,password=pass_hash)
+        new_fallow = Fallow()
+        db.session.add(new_fallow)
         db.session.add(new_user)
         db.session.commit()
         for key in list(session.keys()):

@@ -27,7 +27,7 @@ login_manager.init_app(app)
 login_manager.login_view = "home.user_login"
 login_manager.login_message_category = "success"
 
-app.config['SECRET_KEY'] = environ['SECRET_KEY']
+app.config['SECRET_KEY']= environ['SECRET_KEY']
 
 #-------- DebugToolbarExtension ----------
 app.debug = True
@@ -68,4 +68,4 @@ from mysite.api.views import api
 app.register_blueprint(blog,url_prefix='/blog')
 app.register_blueprint(user,url_prefix='/user')
 app.register_blueprint(home,url_prefix='/')
-app.register_blueprint(api,url_prefix='/api')
+app.register_blueprint(api,url_prefix='/api/v1/')

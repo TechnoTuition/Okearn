@@ -8,15 +8,22 @@ api = Blueprint('api',__name__)
 def api_docs():
   return jsonify({"api": "documentaion"})
 
-@api.get('/users')
+@api.get('/users/')
 def all_user():
   users = User.query.all()
-  alldata = []
+  print(users)
+  data = []
   for user in users:
-    data = dict(id = user.id,firstname=user.firstname,lastname=user.lastname,email=user.email,image_file=user.image_file,posts=user.users)
-    alldata.append(data)
-  print(alldata)
-  return jsonify(alldata)
+    users_data = {}
+    users_data['id'] = user.id
+    users_data['firstname'] = user.firstname
+    users_data['lastname'] = user.lastname
+    users_data['email'] = user.email
+    users_data['fallowing'] = len(user.fallowing)
+    users_data['posts'] = len(user.posts)
+    data.append(users_data)
+  print(data)
+  return jsonify(data)
 
 
 @api.route('/user/<id>/',methods=["GET","POST"])

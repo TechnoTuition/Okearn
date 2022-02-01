@@ -161,6 +161,7 @@
   border-radius: 4px;
   color: white;
   background: rgb(234, 86, 66);
+  outline: none;
 }
 
 /* text decorations */

@@ -2,6 +2,7 @@ from flask import Blueprint,render_template,request,flash,redirect,url_for,jsoni
 from flask_login import login_required,current_user
 from mysite import db
 from .models import Blog,Like
+from mysite.home.models import User,Fallow
 from .forms import PostForm
 
 blog = Blueprint('blog',__name__)
@@ -27,25 +28,50 @@ def index():
     form = PostForm()
   return render_template('blog/index.html',form=form)
 
+# read detail post
 @blog.route('/read/<string:slug>/',methods=["GET","POST"])
 @login_required
 def read_post(slug):
   posts = Blog.query.filter_by(slug=slug).first()
-  return render_template("blog/readpost.html",posts=posts)
   
+  return render_template("blog/readpost.html",posts=posts)
+# like handel 
 @blog.route('/like/<string:post_id>/',methods=['POST'])
 @login_required
 def post_like(post_id):
   posts = Blog.query.filter_by(id=post_id).first()
-  print("post data",posts)
+  print(request.url)
   like = Like.query.filter_by(user_id=current_user.id,post_id=post_id).first()
   if like:
     db.session.delete(like)
     db.session.commit()
-  
+    
   else:
     like = Like(user_id=current_user.id,post_id = post_id)
     db.session.add(like)
     db.session.commit()
   
-  return jsonify({'like': len(posts.like)})
+  return jsonify({'like': len(posts.like),'liked': current_user.id in map(lambda x: x.user_id,posts.like)})
+
+# follow user
+@blog.route('/fallow/<user_id>/',methods=['GET','POST'])
+@login_required
+def fallow_user(user_id):
+  print(request.url)
+  user = User.query.filter_by(id=user_id).first()
+  print(len(user.fallowing))
+  data = []
+  for fallow in user.fallowing:
+    data.append(fallow.id)
+  if current_user.id in data:
+    fallower = Fallow.query.filter_by(id=current_user.id).first()#
+    user.fallowing.remove(fallower)
+    db.session.commit()
+    
+  else:
+  # get post related user id
+   fallower = Fallow.query.filter_by(id=current_user.id).first()#
+   user.fallowing.append(fallower)
+   db.session.add(user)
+   db.session.commit()
+  return jsonify({'fallower': len(user.fallowing),'fallowed': True})

@@ -27,7 +27,7 @@
     <ul class="list-group">
       <li class="list-group-item d-flex justify-content-between align-items-center">
         Total like
-        <span class="badge bg-primary rounded-pill"><i class="bi bi-hand-thumbs-up"></i>14</span>
+        <span class="badge bg-primary rounded-pill"><i class="bi bi-hand-thumbs-up"></i>{{ current_user.likes|length}}</span>
       </li>
       <li class="list-group-item d-flex justify-content-between align-items-center">
         Total views
@@ -35,7 +35,7 @@
       </li>
       <li class="list-group-item d-flex justify-content-between align-items-center">
         Followers
-        <span class="badge bg-primary rounded-pill"><i class="bi bi-people"></i>1</span>
+        <span class="badge bg-primary rounded-pill"><i class="bi bi-people"></i>{{ current_user.fallowing|length}}</span>
       </li>
     </ul>
   </div>

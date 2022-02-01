@@ -16,3 +16,4 @@ class Like(db.Model):
   id = db.Column(db.Integer,primary_key=True)
   user_id = db.Column(db.Integer,db.ForeignKey('user.id',ondelete="CASCADE"),nullable=False)
   post_id = db.Column(db.Integer,db.ForeignKey('blog.id',ondelete="CASCADE"),nullable=False)
+
