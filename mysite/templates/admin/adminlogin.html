@@ -1,0 +1,44 @@
+{% extends 'admin/adminbase.html' %}
+{% block title %}Okearn Administrations Log in{% endblock %}
+
+{% block content %}
+
+<div class="t-center h-100-vh">
+  <div class="coll-10 flex justify-center t-center m-top-200 colum">
+    <div class="my-8">
+          {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="bg-orange-10 width-40 p-y-6 p-x-6 r-3">
+      <p class="text-white">
+        {{ message }}
+      </p>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    </div>
+
+    <div class="bg-slate-50 width-40 p-y-6 p-x-6 r-3">
+      <p class="text-white">
+        Administrations Login
+      </p>
+    </div>
+
+    <form method="post">
+      <div class="">
+        <input type="email" class="inpu" name="email" id="" value="" placeholder="Email" />
+      </div>
+      <div class="">
+        <input type="password" class="inpu"name="password" id="" value="" placeholder="Password" />
+      </div>
+      <div class="">
+        <input type="submit" class="btnn-lg"name="" id="" value="LOGIN" />
+      </div>
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

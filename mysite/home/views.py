@@ -10,10 +10,6 @@ from flask_socketio import send
 
 home = Blueprint('home',__name__)
 
-@socketio.on('message')
-def handle_message(data):
-    print('received message: ' + data)
-    send(data)
 @home.route('/')
 def index():
   post = Blog.query.all()
@@ -108,8 +104,3 @@ def email_verify():
       return redirect("/")
     form = EmailVerificationForm()
   return render_template("home/email_verification.html",form=form)
-# chat route
-
-@home.route('/chat/',methods=["GET","POST"])
-def chat_user():
-  return render_template('home/chat.html')

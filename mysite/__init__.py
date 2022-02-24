@@ -63,9 +63,11 @@ final = totalnum[:6]
 from mysite.blog.views import blog
 from mysite.user.views import user
 from mysite.home.views import home
-from mysite.api.views import api
+from mysite.api.urls import api
+from mysite.admin.urls import admin
 
 app.register_blueprint(blog,url_prefix='/blog')
 app.register_blueprint(user,url_prefix='/user')
 app.register_blueprint(home,url_prefix='/')
 app.register_blueprint(api,url_prefix='/api/v1/')
+app.register_blueprint(admin,url_prefix='/admin/')

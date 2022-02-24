@@ -3,7 +3,7 @@
 {% include 'headers.html' %}
 <div class="roww flex">
 
-  <div class="coll-6 shadoww bg-slate-200">
+  <div class="coll-6 border">
     <span>See all post <a href="">click</a></span>
     {% if user.posts %}
     <ol class="list-group list-group-numbered">
@@ -11,34 +11,51 @@
       <li class="list-group-item d-flex justify-content-between align-items-start">
         <div class="ms-2 me-auto">
           <div class="fw-bold">
-            {{ post.title }}
+            <a class="text-decorations-none" href="{{ url_for('blog.edit_post',id=post.id) }}">            {{ post.title|truncate(100) }}</a>
           </div>
         </div>
-        <span class="badge bg-info rounded-pill"><i class="bi bi-eye"></i>14</span>
+        <span class="badge bg-info rounded-pill"><i class="bi bi-eye"></i>{{ post.views }}</span>
       </li>
       {% endfor %}
+      <hr />
+      <div>
+        <canvas id="myPost"></canvas>
+      </div>
+
       {% else %}
-      <p>No Have any post</p>
+      <p>
+        No Have any post
+      </p>
     </ol>
 
     {% endif %}
   </div>
-  <div class="coll-4 shadoww bg-slate-200">
+  <div class="coll-4 border">
     <ul class="list-group">
       <li class="list-group-item d-flex justify-content-between align-items-center">
         Total like
-        <span class="badge bg-primary rounded-pill"><i class="bi bi-hand-thumbs-up"></i>{{ current_user.likes|length}}</span>
+        <span class="badge bg-primary rounded-pill"><i class="bi bi-hand-thumbs-up"></i>{{ like }}</span>
       </li>
       <li class="list-group-item d-flex justify-content-between align-items-center">
         Total views
-        <span class="badge bg-primary rounded-pill"><i class="bi bi-eye"></i>2</span>
+        <span class="badge bg-primary rounded-pill"><i class="bi bi-eye"></i>{{ views }}</span>
       </li>
       <li class="list-group-item d-flex justify-content-between align-items-center">
         Followers
         <span class="badge bg-primary rounded-pill"><i class="bi bi-people"></i>{{ current_user.fallowing|length}}</span>
       </li>
     </ul>
+    <hr />
+    <div>
+      <canvas id="myChart" height="500" width="100"></canvas>
+    </div>
   </div>
 </div>
+
+{% block script %}
+<script src="{{ url_for('static', filename='js/user/index.js/')}}"></script>
+<script type="text/javascript" charset="utf-8">
+</script>
+{% endblock %}
 {# include 'footer.html' #}
 {% endblock %}

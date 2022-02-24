@@ -9,6 +9,7 @@ class Blog(db.Model):
   body = db.Column(db.String(1000),unique=False,nullable=False)
   post_created = db.Column(db.DateTime,nullable=False,default=datetime.utcnow)
   post_image = db.Column(db.String(50),unique=False,nullable=True)
+  views = db.Column(db.Integer,nullable=True,default=0)
   user_id = db.Column(db.Integer,db.ForeignKey('user.id'),nullable=False)
   like =  db.relationship('Like',backref='blog',lazy=True)
     

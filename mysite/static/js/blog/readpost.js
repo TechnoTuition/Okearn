@@ -1,6 +1,7 @@
 // user like fetch request
 var likeCount;
 function like(postid) {
+
   likeCount = document.querySelector(`#likeCount${postid}`)
   fetch(`${window.origin}/blog/like/${postid}/`, {
     method: 'POST',
@@ -8,7 +9,8 @@ function like(postid) {
       'Content-Type': 'application/json'
     }
   }).then(res => res.json()).then(data=> {
-    if (data['liked'] == true) {
+
+if (data['liked'] == true) {
       let i = document.querySelector("#like")
       i.className = "fas fa-thumbs-up"
     } else {

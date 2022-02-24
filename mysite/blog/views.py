@@ -33,10 +33,32 @@ def index():
 @login_required
 def read_post(slug):
   posts = Blog.query.filter_by(slug=slug).first()
+  posts.views = posts.views + 1
+  db.session.add(posts)
+  db.session.commit()
+  data = current_user.id in map(lambda x: x.user_id,posts.like)
   
-  return render_template("blog/readpost.html",posts=posts)
+  return render_template("blog/readpost.html",posts=posts,user=current_user.id,like=data)
+
+#edit posts
+@blog.route('/edit/<int:id>/')
+def edit_post(id):
+  print(id)
+  post = Blog.query.filter_by(id=id).first()
+  print(post)
+  data = {}
+  data['id'] = post.id
+  data['title'] = post.title
+  data['slug'] = post.slug
+  data['like'] = len(post.like)
+  
+  #data['body'] = post.body
+  data['post_created'] = post.post_created
+  return jsonify({'post': data})
+
+
 # like handel 
-@blog.route('/like/<string:post_id>/',methods=['POST'])
+@blog.route('/like/<string:post_id>/',methods=['POST','GET'])
 @login_required
 def post_like(post_id):
   posts = Blog.query.filter_by(id=post_id).first()

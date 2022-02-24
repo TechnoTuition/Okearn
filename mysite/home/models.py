@@ -16,6 +16,7 @@ class User(db.Model,UserMixin):
     firstname = db.Column(db.String(20),unique=False,nullable=False)
     lastname = db.Column(db.String(20),unique=False,nullable=False)
     email = db.Column(db.String(25),unique=True,nullable=False)
+    is_admin = db.Column(db.Boolean,default=False,nullable=True)
     password = db.Column(db.String(20),unique=False,nullable=False)
     image_file = db.Column(db.String(50),nullable=False,default="default.png")
     user_created = db.Column(db.DateTime,nullable=False,default=datetime.utcnow)

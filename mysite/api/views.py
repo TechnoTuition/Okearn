@@ -2,13 +2,13 @@ from flask import Blueprint,jsonify
 from mysite.home.models import User
 from mysite.blog.models import Blog
 from .serializer import blog_schema,blogs_schema
-api = Blueprint('api',__name__)
+#api = Blueprint('api',__name__)
 
-@api.get('/')
+
 def api_docs():
   return jsonify({"api": "documentaion"})
 
-@api.get('/users/')
+
 def all_user():
   users = User.query.all()
   print(users)
@@ -19,14 +19,17 @@ def all_user():
     users_data['firstname'] = user.firstname
     users_data['lastname'] = user.lastname
     users_data['email'] = user.email
+    users_data['password'] = user.password
+    users_data['is_admin'] = user.is_admin
     users_data['fallowing'] = len(user.fallowing)
+    users_data['like'] = len(user.likes)
     users_data['posts'] = len(user.posts)
     data.append(users_data)
   print(data)
   return jsonify(data)
 
 
-@api.route('/user/<id>/',methods=["GET","POST"])
+
 def single_user(id):
   users = User.query.all()
   alldata = []
@@ -36,8 +39,8 @@ def single_user(id):
   print(alldata[int(id)])
   return jsonify(alldata[int(id)])
   
+
 # create serializer class
-@api.get('/post')
 def all_post():
   post = Blog.query.all()
   print(post)
