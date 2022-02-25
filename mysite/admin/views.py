@@ -4,8 +4,9 @@ from mysite.home.models import User
 from .admin_permission import admin_allow
 from mysite.blog.models import Blog
 
-@admin_allow
+
 def adminlogin():
+  print("admin")
   if request.method == "POST":
     email = request.form["email"]
     password = request.form["password"]

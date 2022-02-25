@@ -1,5 +1,6 @@
 from mysite import app,socketio
-import os
+import sys
+from mysite.commandline import args
 if __name__ == '__main__':
+  args
    
-    app.run(host="0.0.0.0",debug=True,port=os.environ['PORT'])
