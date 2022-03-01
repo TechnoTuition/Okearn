@@ -15,6 +15,25 @@
   height: auto;
 
 }
+.table-c{
+  border-radius: 4px;
+  margin: 12px auto;
+  border-collapse: collapse;
+  border: 1px solid #E0D8D9;
+  
+}
+.table-c thead tr td{
+  background: #FF6773;
+  font-weight: bold;
+  padding: 14px;
+}
+.table-c tbody tr td{
+  padding: 14px;
+  border-bottom: 0.5px solid #D7D6D6;
+}
+.table-c tbody tr:nth-child(even){
+  background: #E0D8D9;
+}
 
 /* input  */
 .inpu {
@@ -80,7 +99,7 @@
   text-align: left;
 }
 .h-s {
-  height: auto;
+  height: 100vh;
 }
 /* position */
 .pf-t-0-b-0 {

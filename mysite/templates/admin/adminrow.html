@@ -7,44 +7,28 @@
     <div class="flex space-bet bg-slate-200 my-8 p-x-6 p-y-6 r-2">
       <div class="ove-s">
 
-        
-        <table border="1">
+
+        <table class="table-c">
           <thead>
             <tr>
-              <td>id</td>
-              <td>name</td>
-              <td>email</td>
-              <td>password</td>
-              <td>role</td>
-              <td></td>
-              
+              {% for i in u %}
+              <td>{{ i }}</td>
+              {% endfor %}
+                 <td>Update</td>
+                <td>Delete</td>
             </tr>
           </thead>
-          <tbody >
+          <tbody>
+            {% for i in d %}
             <tr>
-              <td>1</td>
-              <td>suraj</td>
-              <td>s@gmail.cok</td>
-              <td>626228177117</td>
-              <td>2</td>
-              <td>false</td>
-                            <td>1</td>
-              <td>suraj</td>
-              <td>s@gmail.cok</td>
-              <td>626228177117</td>
-              <td>2</td>
-              <td>false</td>
+              {% for a in i %}
+              <td>{{ a }}</td>
+
+              {% endfor %}
+              <td><button class="btnn"type="submit"><i class="bi bi-pen"></i></button></td>
+              <td><button class="btnn"type="submit"><i class="bi bi-trash"></i></button></td>
             </tr>
-            <tr>
-              <td>2</td>
-              <td>suraj</td>
-              <td>s@gmail.cok</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>akash</td>
-              <td>a@gmail.cok</td>
-            </tr>
+            {% endfor %}
           </tbody>
         </table>
       </div>

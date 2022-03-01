@@ -13,6 +13,7 @@ home = Blueprint('home',__name__)
 @home.route('/')
 def index():
   post = Blog.query.all()
+  
   return render_template("home/index.html",posts=post)
 # register form 
 @home.route('/register/',methods=['GET','POST'])

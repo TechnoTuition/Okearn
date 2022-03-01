@@ -4,12 +4,14 @@
 {% include 'admin/adminheader.html' %}
 <div class="roww flex">
   <div class="coll-6">
+    {% for t in table %}
     <div class="flex space-bet bg-orange-10 my-8 p-x-6 p-y-6 r-2">
       <div class="">
-        <a class="text-black"href="">Post</a>
+        <a class="text-black"href="{{ url_for('admin.adminrow',table=t )}}">{{ t }}</a>
       </div>
 
     </div>
+  {% endfor %}
   </div>
   <div class="bg-slate-200 coll-4 ">
     <div class="bg-slate-100 text-white p-y-6 p-x-6 r-3">
