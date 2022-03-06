@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
 {% include 'headers.html' %}
-<div class="roww flex">
+<div class="roww flex m-top-80">
 
-  <div class="coll-6 border">
+  <div class="coll-6 border ">
     <span>See all post <a href="">click</a></span>
     {% if user.posts %}
     <ol class="list-group list-group-numbered">
-      {% for post in user.posts %}
+      {% for post in user.posts[:10] %}
       <li class="list-group-item d-flex justify-content-between align-items-start">
         <div class="ms-2 me-auto">
           <div class="fw-bold">
-            <a class="text-decorations-none" href="{{ url_for('blog.edit_post',id=post.id) }}">            {{ post.title|truncate(100) }}</a>
+            <a class="text-orange-50 text-decorations-none" href="{{ url_for('blog.edit_post',id=post.id) }}">            {{ post.title|truncate(100) }}</a>
           </div>
         </div>
         <span class="badge bg-info rounded-pill"><i class="bi bi-eye"></i>{{ post.views }}</span>

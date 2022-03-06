@@ -2,8 +2,8 @@
 {% block title %}Creat Post{% endblock %}
 {% block content %}
 {% include 'headers.html' %}
-<div class="roww flex my-5">
-  <div class="coll-6 border">
+<div class="roww flex m-top-80 ">
+  <div class="coll-6 border ">
     <form class="m-auto "method="post",action="{{ url_for('blog.index')}}">
 
       {{ form.hidden_tag() }}

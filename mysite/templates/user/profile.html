@@ -2,10 +2,10 @@
 {% block content %}
 {% include 'headers.html' %}
 
-<div class="roww flex">
-  <div class="coll-4 shadoww ">
+<div class="roww flex m-top-80">
+  <div class="coll-4  ">
     <div class="d-flex flex-column align-items-center text-center">
-      <img src="/static/media/profile_pic/{{ current_user.image_file }}" alt="Admin" class="rounded-circle" width="100">
+      <img src="/static/media/profile_pic/{{ current_user.image_file }}" alt="Admin" class="img-pic-lg">
       <h4>{{ current_user.firstname }}{{ current_user.lastname }}</h4>
       <p class="text-secondary mb-1">
         Full Stack Developer
@@ -17,7 +17,7 @@
       <button class="btn btn-outline-danger">Message</button>
     </div>
   </div>
-  <div class="coll-6 shadoww radiuss">
+  <div class="coll-6 ">
     <div class="card-body">
       <div class="row">
         <div class="col-sm-3">
@@ -51,6 +51,23 @@
           <a class="btn btn-outline-danger " href="/user/profileedit/{{ current_user.id }}">Edit</a>
         </div>
       </div>
+
     </div>
+    <div class="roww flex my-8 colum">
+      <div class="coll-">
+        <h4 class="">Upload Profile pic</h4>
+        <div class="border p-y-6 p-x-6 colum">
+          <form method="POST"action="{{ url_for('user.profile_upload') }}" enctype="multipart/form-data">
+            <p>
+              <div>
+                <input class="" type="file" name="picture" id="" value="" />
+              </div>
+            </p>
+            <button class="btn btn-primary" type="submit">Upload</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
 
     {% endblock %}

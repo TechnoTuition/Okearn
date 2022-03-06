@@ -2,8 +2,10 @@
 {% block title %}Okearn Administrations Log in{% endblock %}
 {% block content %}
 {% include 'admin/adminheader.html' %}
+{% include 'admin/adminpath.html' %}
 <div class="roww flex">
   <div class="coll-6 ove-s">
+    <button class="btnn-normal bg-slate-100"type="submit"><a class="text-white"href="{{ url_for('admin.admin_data_add',t=t)}}">Add Data</a></button>
     <div class="flex space-bet bg-slate-200 my-8 p-x-6 p-y-6 r-2">
       <div class="ove-s">
 
@@ -14,19 +16,23 @@
               {% for i in u %}
               <td>{{ i }}</td>
               {% endfor %}
-                 <td>Update</td>
-                <td>Delete</td>
+              <td>Update</td>
+              <td>Delete</td>
             </tr>
           </thead>
           <tbody>
             {% for i in d %}
             <tr>
               {% for a in i %}
-              <td>{{ a }}</td>
+              <td>{{ a|string|truncate(10) }}</td>
 
               {% endfor %}
-              <td><button class="btnn"type="submit"><i class="bi bi-pen"></i></button></td>
-              <td><button class="btnn"type="submit"><i class="bi bi-trash"></i></button></td>
+              <td>
+                <a href="{{ i.id }}">                <i class="bi bi-pen"></i></a>
+              </td>
+              <td>
+                <a href="{{ url_for('admin.admin_delete',table=t,id = i.id) }}">                <i class="bi bi-trash">Delete</i></a>
+              </td>
             </tr>
             {% endfor %}
           </tbody>

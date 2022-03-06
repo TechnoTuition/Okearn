@@ -11,7 +11,7 @@ class Blog(db.Model):
   post_image = db.Column(db.String(50),unique=False,nullable=True)
   views = db.Column(db.Integer,nullable=True,default=0)
   user_id = db.Column(db.Integer,db.ForeignKey('user.id'),nullable=False)
-  like =  db.relationship('Like',backref='blog',lazy=True)
+  like =  db.relationship('Like',backref='blog',lazy=True,passive_deletes=True)
     
 class Like(db.Model):
   id = db.Column(db.Integer,primary_key=True)

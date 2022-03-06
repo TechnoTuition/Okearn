@@ -5,11 +5,13 @@ import getpass
 from colorama import init,Fore,Style
 import os
 import sys
-
+import pathlib
 
 parser = ArgumentParser(usage='web app <command> ')
 parser.add_argument("-r","--run",action='store_true',help="Run for development server")
 parser.add_argument("-a","--admin",action='store_true',help="Create admin user")
+parser.add_argument("-d","--delete",action='store_true',help="Delete database")
+parser.add_argument('-c','--create',action='store_true',help="Create database")
 args = parser.parse_args()
 
 init()
@@ -43,8 +45,28 @@ def runDevelopmentServer():
     app.run(host="0.0.0.0",debug=True,port=os.environ['PORT'])
   except KeyboardInterrupt:
     sys.exit()
-
+def createDatabase():
+  """
+  create database command 
+  """
+  path = os.getcwd()+"/mysite/"
+  db.create_all()
+  sys.stdout.write("Database created\n")
+def deleteDatabase():
+  path = os.getcwd()+"/mysite/test.db"
+  if os.path.exists(path):
+    try:
+      os.remove(path)
+      sys.stdout.write("Database delete\n")
+    except FileNotFoundError:
+      sys.stdout.write("file not found\n")
+  else:
+    print("not exists")
 if args.admin:
   createAdminUser()
 elif args.run:
   runDevelopmentServer()
+elif args.create:
+  createDatabase()
+elif args.delete:
+  deleteDatabase()

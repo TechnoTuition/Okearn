@@ -13,8 +13,10 @@ home = Blueprint('home',__name__)
 @home.route('/')
 def index():
   post = Blog.query.all()
-  
-  return render_template("home/index.html",posts=post)
+  for i in post:
+    print(i.users.image_file)
+  popularPost = Blog.query.filter(Blog.views>2).all()
+  return render_template("home/index.html",posts=post,popularPost=popularPost)
 # register form 
 @home.route('/register/',methods=['GET','POST'])
 def user_register():

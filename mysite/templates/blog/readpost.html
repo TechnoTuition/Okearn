@@ -2,11 +2,11 @@
 {% block title %}Creat Post{% endblock %}
 {% block content %}
 {% include 'headers.html' %}
-<div class="roww">
-  <div class="coll-10-lg my-8 ">
+<div class="roww m-top-80">
+  <div class="coll-10-lg ">
     <div class="bg-slate-200 flex t-center p-x-6 p-y-6 space-around ">
       <div class="flex t-center">
-        <img class="img-pic " src="pic.jpg" alt="">
+        <img class="img-pic " src="{{ posts.users.image_file }}" alt="">
         <h3 class="m-left-4">{{ posts.users.firstname }}
           {{ posts.users.lasttname }}
           <p class="text-sm text-gray-50 m-b-0">

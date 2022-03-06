@@ -1,10 +1,10 @@
-<div class="roww flex my-8">
+<div class="roww flex m-top-80">
 
   <div class="coll-6 flex colum ">
     {% for post in posts %}
-    <div class="my-8 shadoww ">
+    <div class="my-8 shadoww r-3">
       <div class="flex t-center p-y-6 p-x-6 bg-slate-200">
-        <img class="img-pic" src="/static/media/profile_pic/{{ current_user.image_file }}" alt="pic">
+        <img class="img-pic" src="static/media/profile_pic/{{ post.users.image_file }}" alt="pic">
         <h3 class="mx-8 block m-b-0">{{ post.users.firstname }}
           {{ post.users.lastname }}
           <p class="text-sm text-gray-50 m-b-0">
@@ -25,15 +25,15 @@
 
     {% endfor %}
   </div>
-  <div class="coll-4 m-coll-10 m-display-none my-8 pf-t-10-r-0">
+  <div class="coll-4 m-coll-10 bg-slate-200 m-display-none  pf-t-10-r-0 border ">
     <div class="">
       <h3 class="bg-slate-100 p-y-6 p-x-6 text-white r-3">Popular Post</h3>
-      <p class="p-y-6 r-3 p-x-6 border bg-slate-200">
-        Python is nice language for
+      {% for i in popularPost %}
+      <p class="p-y-6 r-3 p-x-6 border my-8 bg-slate-200" >
+        <a href="{{ url_for('blog.read_post',slug=i.slug) }}">{{ i.title }}</a>
       </p>
-      <p class="p-y-6 p-x-6 r-3 border bg-slate-200">
-        Java is hight level language 
-      </p>
+      
+      {% endfor %}
     </div>
 
   </div>

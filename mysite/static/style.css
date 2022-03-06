@@ -34,7 +34,10 @@
 .table-c tbody tr:nth-child(even){
   background: #E0D8D9;
 }
-
+.active{
+ background: rgb(234, 86, 66);
+ color: red;
+}
 /* input  */
 .inpu {
   padding: 6px 8px;
@@ -74,11 +77,12 @@
   width: 40px;
   border-radius: 35px;
 }
-
-.dropdown-menu>li>a:hover {
-  background-image: none;
-  background-color: rgb(234, 86, 66);
+.img-pic-lg{
+  height: 80px;
+  width: 80px;
+  border-radius: 50px;
 }
+
 
 .b-bottom {
   border-bottom: 1px solid #50515A;
@@ -108,6 +112,11 @@
   bottom: 10;
   width: 100vw;
 }
+.pf-t-0 {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+}
 .pf-t-10-r-0 {
   position: fixed;
   top: 100px;
@@ -125,6 +134,9 @@
 */
 .z-i {
   z-index: -1;
+}
+.z-ip{
+  z-index: 1;
 }
 .p-fix-b-0 {
   position: fixed;
@@ -227,6 +239,7 @@
   color: black;
 }
 .text-orange-50 {
+
   color: rgb(234, 86, 66);
 }
 
@@ -291,6 +304,12 @@
 }
 .m-top-50 {
   margin-top: 50px;
+}
+.m-top-70{
+  margin-top: 70px;
+}
+.m-top-80{
+  margin-top: 80px;
 }
 .m-top-200 {
   margin-top: 200px;
@@ -415,7 +434,7 @@
 }
 
 .shadoww {
-  border-radius: 2px;
+  
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
