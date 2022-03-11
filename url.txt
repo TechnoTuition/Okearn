@@ -1,0 +1,1 @@
+http://localhost:3000/email_verification/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InN1cmFqcHJhamFwYXRpMjIyMDlAZ21haWwuY29tIiwiZXhwIjoxNjQ2OTk2MzcyfQ.60gH7bhTpXCbFQCqhv8z1gjtYn30cRikkIJZlnsJ1ag/

@@ -1,11 +1,13 @@
-from argparse import ArgumentParser
 from mysite import db,app,bcrypt
 from mysite.home.models import User,Fallow
-import getpass
 from colorama import init,Fore,Style
+
+import getpass
+from argparse import ArgumentParser
 import os
 import sys
 import pathlib
+import secrets 
 
 parser = ArgumentParser(usage='web app <command> ')
 parser.add_argument("-r","--run",action='store_true',help="Run for development server")
@@ -31,8 +33,9 @@ def createAdminUser():
       elif password != conformPass:
         print(f"{Style.BRIGHT}{Fore.RED}Password and ConformPassword not are same{Style.RESET_ALL}")
       else:
+        
         hashpass = bcrypt.generate_password_hash(password).decode("utf-8")
-        u = User(firstname="admin",lastname="u",email=email,is_admin=True,password=hashpass)
+        u = User(firstname="admin",lastname="u",email=email,is_admin=True,password=hashpass,is_active=True)
         new_fallow = Fallow()
         db.session.add(new_fallow)
         db.session.add(u)

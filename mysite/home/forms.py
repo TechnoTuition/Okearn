@@ -12,4 +12,4 @@ class LoginForm(FlaskForm):
   password = PasswordField('Password',validators=[DataRequired(),Length(min=6)])
   
 class EmailVerificationForm(FlaskForm):
-  code = IntegerField('Email Verification',validators=[DataRequired()])
+  code = StringField('Email Verification',validators=[DataRequired()])
